@@ -1,0 +1,15 @@
+---
+import DomainRadar from './DomainRadar.jsx';
+
+interface Props {
+  data: { name: string; value: number }[];
+  title: string;
+}
+
+const { data, title } = Astro.props;
+---
+
+<div class="bg-white p-6 rounded-2xl shadow-md">
+  <h2 class="text-xl font-bold text-slate-800 mb-4">{title}</h2>
+  <DomainRadar data={data} client:load />
+</div>

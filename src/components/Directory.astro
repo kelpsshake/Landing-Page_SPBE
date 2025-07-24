@@ -1,0 +1,33 @@
+---
+const apps = [
+  { name: 'Bedas Digital Services', icon: '/images/bds (2).png' },
+  { name: 'DHE (Daftar Hadir Elektronik)', icon: 'images/dhe.png' },
+  { name: 'e-Office', icon: 'images/e-office.png' },
+  { name: 'SP4N Lapor', icon: 'images/span lapor.png' },
+  { name: 'SIMASDA', icon: 'images/logo2.png' },
+  { name: 'Radio Kandaga', icon: 'images/radio.png' },
+  { name: 'Open SID', icon: 'images/opensid.png' },
+];
+---
+
+<section id="aplikasi" class="bg-gradient-to-b from-blue-50 to-white py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-slate-800 text-center mb-4">
+      Layanan & Aplikasi Digital
+    </h2>
+    <p class="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
+      Akses cepat terhadap berbagai layanan publik digital Kabupaten Bandung yang terintegrasi dan mudah digunakan.
+    </p>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6">
+      {apps.map((app) => (
+        <div class="bg-white rounded-xl shadow-md transition p-4 flex flex-col items-center text-center group">
+          <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-3 overflow-hidden">
+            <img src={app.icon} alt={app.name} class="w-full h-full object-cover scale 110" />
+          </div>
+          <h3 class="text-sm font-medium text-slate-800 leading-tight">{app.name}</h3>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

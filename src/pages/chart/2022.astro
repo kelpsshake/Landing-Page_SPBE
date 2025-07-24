@@ -1,0 +1,104 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StatCard from '../../components/spbe/StatCard.astro';
+import DomainChart from '../../components/spbe/DomainChart.astro';
+import DetailTable from '../../components/spbe/DetailTable.astro';
+import Highlights from '../../components/spbe/Highlights.astro';
+import YearNavigation from './YearNavigation.astro';
+
+const year = 2022;
+const totalIndex = 2.81;
+const category = "Baik";
+const color = '#8B5CF6'; 
+
+const domainData = [
+  { name: 'Kebijakan SPBE', value: 3.0 },
+  { name: 'Tata Kelola SPBE', value: 2.8},
+  { name: 'Manajemen SPBE', value: 1.27},
+  { name: 'Layanan SPBE', value: 3.33},
+];
+
+const highlightsData = [
+    "Penerapan layanan digital mulai merata di sebagian besar perangkat daerah.",
+    "Infrastruktur SPBE mulai diperkuat dengan sistem yang lebih terintegrasi.",
+    "Beberapa domain mengalami peningkatan nilai signifikan."
+];
+
+const detailData = [
+  {
+    domain: "Kebijakan SPBE",
+    items: [
+      { name: "Kebijakan Internal terkait Tata Kelola SPBE", value: 3.00 },
+    ],
+  },
+  {
+    domain: "Tata Kelola SPBE",
+    items: [
+      { name: "Perencanaan Strategis SPBE", value: 2.75 },
+      { name: "Teknologi Informasi dan Komunikasi", value: 2.5 },
+      { name: "Penyelenggara SPBE", value: 3.50 },
+    ],
+  },
+  {
+    domain: "Manajemen SPBE",
+    items: [
+      { name: "Penerapan Manajemen SPBE", value: 1.25 },
+      { name: "Audit TIK", value: 1.33 },
+    ],
+  },
+  {
+    domain: "Layanan SPBE",
+    items: [
+      { name: "Layanan Administrasi Pemerintahan Berbasis Elektronik", value: 3.00 },
+      { name: "Layanan Publik Berbasis Elektronik", value: 3.83 },
+    ],
+  },
+];
+---
+
+<Layout title={`Detail Indeks SPBE Tahun ${year}`}>
+  <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+    <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+            <div class="mb-8">
+            <h1 class="text-3xl sm:text-3xl font-extrabold text-white tracking-tight pt-12">Rincian Indeks SPBE {year}</h1>
+            <p class="mt-2 text-lg text-white">Analisis mendalam capaian Indeks SPBE Kabupaten Bandung.</p>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-6">
+  <!-- Navigasi di kiri -->
+  <div class="lg:w-1/5 w-full lg:sticky top-24 self-start">
+    <YearNavigation />
+  </div>
+
+    <!-- Konten utama -->
+  <div class="flex-1 flex flex-col gap-6">
+    <!-- Bagian atas: Card + Chart + Highlights -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2 flex flex-col gap-6">
+        <StatCard 
+          index={totalIndex} 
+          category={category} 
+          color={color} 
+          year={2022} 
+          note="Tahun ini menjadi tahap awal integrasi antar layanan dan sistem informasi, meskipun belum sepenuhnya optimal. Pemerintah Kabupaten Bandung mulai membangun sinergi antar perangkat daerah dalam rangka meningkatkan keterpaduan SPBE." 
+        />
+        <DomainChart data={domainData} title="Komposisi Indeks per Domain" />
+      </div>
+
+      <div class="lg:col-span-1">
+        <Highlights title="Catatan Penting 2022" items={highlightsData} color={color} />
+      </div>
+    </div>
+
+    <!-- DetailTable pindah ke paling bawah -->
+    <div class="mt-6">
+      <DetailTable
+            title="Rincian Indeks SPBE Tahun 2022"
+            data={detailData}
+          />
+    </div>
+  </div>
+</div>
+
+  </div>
+</Layout>

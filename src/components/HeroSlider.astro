@@ -1,0 +1,59 @@
+---
+const locations = [
+  { id: 1, 
+    title: "Menara Sabilulungan", 
+    subtitle: "Monumen Representatif Wilayah Kab. Bandung", 
+    bgImage: "/images/Menara-Sabilulungan.png", 
+    cardImage: "/images/Menara-Sabilulungan.png" 
+  },
+  { id: 2, 
+    title: "Gedong Budaya Sabilulungan", 
+    subtitle: "Gedung Representatif untuk Kegiatan Seni dan Budaya", 
+    bgImage: "/images/gbs.jpg", 
+    cardImage: "/images/gbs.jpg" 
+  },
+  { id: 3, 
+    title: "Stadion Si Jalak HArupat",
+    subtitle: "Pusat Kegiatan Olahraga Kabupaten Bandung", 
+    bgImage: "/images/jalak.png", 
+    cardImage: "/images/jalak.png" 
+  },
+  { id: 4, 
+    title: "Kawah Putih", 
+    subtitle: "Destinasi Geowisata di Bandung Selatan", 
+    bgImage: "/images/kawah.png", 
+    cardImage: "/images/kawah.png" 
+  },
+];
+---
+<div 
+  id="hero-slider-container"
+  data-locations={JSON.stringify(locations)}
+  class="relative w-full h-screen bg-cover bg-center transition-all duration-700"
+>
+  <div class="absolute inset-0 bg-black/40"></div>
+  <div class="relative z-10 h-full flex flex-col justify-between p-8 md:p-16 text-white overflow-hidden">
+    <div class="flex-grow flex items-center">
+      <div class="w-full md:w-2/3">
+        <h2 id="hero-title" class="text-4xl md:text-4xl font-bold uppercase"></h2>
+        <p id="hero-subtitle" class="text-2xl md:text-2xl"></p>
+      </div>
+    </div>
+    <section id="image-carousel" class="splide w-full md:w-2/3 ml-auto" aria-label="Image Carousel">
+      <div class="splide__track">
+        <ul class="splide__list">
+          {locations.map((location) => (
+            <li class="splide__slide">
+              <div 
+                class="w-40 h-56 bg-cover bg-center rounded-lg cursor-pointer"
+                style=`background-image: url('${location.cardImage}')`
+              ></div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script src="../slider-init.js"></script>

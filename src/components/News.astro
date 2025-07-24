@@ -1,0 +1,83 @@
+---
+// src/components/NewsSection.astro
+const headline = {
+    title: "Pemkab Hadirkan Internet Gratis Se-Kabupaten Bandung Lewat Bewara DS",
+    category: "INOVASI",
+    image: "/images/pemkab-bandung-1.jpeg",
+    date: "5 Juli 2025",
+    };
+const latest = [
+  {
+    title: "Pelatihan SPBE untuk ASN Berlangsung Meriah",
+    category: "KEGIATAN",
+    image: "https://picsum.photos/seed/latest1/400/300",
+    date: "3 Juli 2025",
+  },
+  {
+    title: "SPBE Dorong Efisiensi Administrasi Desa",
+    category: "PENGUMUMAN",
+    image: "https://picsum.photos/seed/latest2/400/300",
+    date: "1 Juli 2025",
+  },
+  {
+    title: "Digitalisasi Layanan Kesehatan di Kabupaten Bandung",
+    category: "KEGIATAN",
+    image: "https://picsum.photos/seed/latest3/400/300",
+    date: "28 Juni 2025",
+  },
+];
+---
+
+<section id="berita" class="bg-slate-50 py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 text-center mb-4">
+      Berita Terkini
+    </h2>
+    <p class="text-center text-slate-600 mb-12">
+      Update terbaru seputar transformasi digital di Kabupaten Bandung.
+    </p>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 relative group rounded-xl overflow-hidden shadow hover:shadow-lg transition">
+        <img src={headline.image} alt={headline.title} class="w-full h-80 object-cover group-hover:scale-105 transition duration-300" loading="lazy" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-6 flex flex-col justify-end">
+          <p class="text-sm text-white/70">{headline.category} — {headline.date}</p>
+          <h3 class="text-2xl font-bold text-white">{headline.title}</h3>
+        </div>
+      </div>
+
+          <div class="flex flex-col gap-6">
+        {latest.map((item) => (
+          <div class="bg-white rounded-xl shadow hover:shadow-md transition flex gap-4 overflow-hidden group">
+            <img src={item.image} alt={item.title} class="w-28 h-28 object-cover flex-shrink-0 group-hover:scale-105 transition" loading="lazy" />
+            <div class="p-3 flex flex-col justify-between">
+              <p class="text-xs text-blue-600 font-medium">{item.category} — {item.date}</p>
+              <h4 class="text-sm font-semibold text-slate-800 group-hover:text-blue-700">{item.title}</h4>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+     <div class="mt-12 text-center">
+      <a href="/berita" class="group inline-flex items-center justify-center rounded-lg border-2 border-slate-800 px-8 py-3 font-bold text-slate-800 transition-colors hover:bg-slate-800 hover:text-white focus:outline-none focus:ring">
+        <span class="mr-2">Lihat Semua Berita</span>
+        <svg
+          class="h-5 w-5 transition-transform group-hover:translate-x-1"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"
+          />
+        </svg>
+      </a>
+    </div>
+    
+  </div>
+</section>

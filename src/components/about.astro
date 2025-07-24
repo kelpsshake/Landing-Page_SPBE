@@ -1,0 +1,30 @@
+---
+const nodes = [
+{id: '1', title: 'Transparansi', desc: 'Akses publik terhadap informasi & data pemerintahan.', image: '/images/about1.svg'},
+{id: '2', title: 'Layanan Efisien', desc: 'Digitalisasi birokrasi untuk kemudahan akses dan kecepatan.', image: '/images/about2.svg'},
+{id: '3', title: 'Sistem Terpadu', desc: 'Integrasi antar instansi mencegah tumpang tindih program.', image: '/images/about3.svg'}
+];
+---
+<section id="tentang" class="bg-white py-24">
+<div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Apa itu SPBE?</h2>
+    <p class="text-lg text-slate-600 mb-12 max-w-2xl mx-auto">
+        Tiga pilar utama yang mendorong transformasi digital dalam pemerintahan untuk pelayanan publik yang lebih baik.
+    </p>
+
+    <div class="relative grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+        <div class="hidden md:block absolute top-1/2 left-0 w-full border-t-4 border-blue-300 z-0"></div>
+
+{nodes.map((node) => (
+    <div class="relative bg-blue-50 z-10 shadow-md rounded-xl p-6 flex flex-col items-center text-center group hover:bg-blue-100 transition">
+        <img src={node.image} alt={node.title} class="w-16 h-16 mb-4" loading="lazy" />
+        <h3 class="text-lg font-semibold text-blue-800">{node.title}</h3>
+        <p class="text-slate-600 text-sm mt-2">{node.desc}</p>
+    <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-500 rounded-full border-4 border-white"></div>
+    </div>
+))}
+
+    </div>
+</div>
+</section>
+

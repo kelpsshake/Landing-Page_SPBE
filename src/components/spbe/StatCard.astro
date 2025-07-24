@@ -1,0 +1,49 @@
+---
+interface Props {
+  index: number;
+  category: string;
+  color: string;
+  year: number;
+  note: string;
+}
+const { index, category, color, year, note } = Astro.props;
+---
+
+<div class="bg-white p-6 rounded-2xl shadow-md">
+  <div class="flex flex-col md:flex-row items-center gap-6">
+    <div class="relative w-40 h-40 flex-shrink-0">
+      <canvas id={`mainIndexChart-${year}`}></canvas>
+      <div class="absolute inset-0 flex flex-col items-center justify-center">
+        <span class="text-4xl font-bold" style={`color: ${color}`}>{index.toFixed(1)}</span>
+        <span class="text-sm font-semibold text-slate-500">Indeks SPBE</span>
+      </div>
+    </div>
+    <div class="text-center md:text-left">
+      <h2 class="text-2xl font-bold text-slate-800">Capaian Tahun {year}</h2>
+      <p class="mt-1 text-slate-600 text-justify">
+        Pemerintah Kabupaten Bandung berhasil meraih predikat 
+        <strong class="font-bold" style={`color: ${color}`}> {category}</strong>. 
+        {note}
+      </p>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ index, color, year }}>
+  document.addEventListener('DOMContentLoaded', function () {
+    const ctx = document.getElementById(`mainIndexChart-${year}`)?.getContext('2d');
+    if (!ctx) return;
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        datasets: [{
+          data: [index, 5 - index],
+          backgroundColor: [color, '#f1f5f9'],
+          borderWidth: 0,
+          borderRadius: 8,
+        }]
+      },
+      options: { cutout: '75%', plugins: { tooltip: { enabled: false } } }
+    });
+  });
+</script>

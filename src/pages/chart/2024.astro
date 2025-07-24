@@ -1,0 +1,105 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StatCard from '../../components/spbe/StatCard.astro';
+import DomainChart from '../../components/spbe/DomainChart.astro';
+import DetailTable from '../../components/spbe/DetailTable.astro';
+import Highlights from '../../components/spbe/Highlights.astro';
+import YearNavigation from './YearNavigation.astro';
+
+const year = 2024;
+const totalIndex = 3.9;
+const category = "Sangat Baik";
+const color = '#8B5CF6'; 
+
+const domainData = [
+  { name: 'Kebijakan SPBE', value: 4.6 },
+  { name: 'Tata Kelola SPBE', value: 3.7},
+  { name: 'Manajemen SPBE', value: 2.45},
+  { name: 'Layanan SPBE', value: 4.51},
+];
+
+const highlightsData = [
+    "Transformasi digital memasuki tahap akselerasi dan penguatan inovasi.",
+    "Evaluasi SPBE berbasis hasil kinerja mulai diterapkan secara menyeluruh.",
+    "Kesiapan SDM dan kolaborasi lintas OPD menjadi prioritas utama."
+];
+
+const detailData = [
+  {
+    domain: "Kebijakan SPBE",
+    items: [
+      { name: "Kebijakan Internal terkait Tata Kelola SPBE", value: 4.60 },
+    ],
+  },
+  {
+    domain: "Tata Kelola SPBE",
+    items: [
+      { name: "Perencanaan Strategis SPBE", value: 3.25 },
+      { name: "Teknologi Informasi dan Komunikasi", value: 4.00 },
+      { name: "Penyelenggara SPBE", value: 4.00 },
+    ],
+  },
+  {
+    domain: "Manajemen SPBE",
+    items: [
+      { name: "Penerapan Manajemen SPBE", value: 2.38 },
+      { name: "Audit TIK", value: 2.67 },
+    ],
+  },
+  {
+    domain: "Layanan SPBE",
+    items: [
+      { name: "Layanan Administrasi Pemerintahan Berbasis Elektronik", value: 4.30 },
+      { name: "Layanan Publik Berbasis Elektronik", value: 4.83 },
+    ],
+  },
+];
+---
+
+<Layout title={`Detail Indeks SPBE Tahun ${year}`}>
+  <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+    <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+            <div class="mb-8">
+            <h1 class="text-3xl sm:text-3xl font-extrabold text-white tracking-tight pt-12">Rincian Indeks SPBE {year}</h1>
+            <p class="mt-2 text-lg text-white">Analisis mendalam capaian Indeks SPBE Kabupaten Bandung.</p>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-6">
+  <!-- Navigasi di kiri -->
+  <div class="lg:w-1/5 w-full lg:sticky top-24 self-start">
+    <YearNavigation />
+  </div>
+
+    <!-- Konten utama -->
+  <div class="flex-1 flex flex-col gap-6">
+    <!-- Bagian atas: Card + Chart + Highlights -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2 flex flex-col gap-6">
+        <StatCard 
+          index={totalIndex} 
+          category={category} 
+          color={color} 
+          year={2024} 
+          note="Capaian SPBE tahun ini menandai konsolidasi transformasi digital di Kabupaten Bandung. Integrasi data dan layanan publik mulai berjalan dengan lebih baik, didukung peningkatan kapasitas SDM serta pemanfaatan teknologi yang lebih optimal." 
+        />
+        <DomainChart data={domainData} title="Komposisi Indeks per Domain" />
+      </div>
+
+      <div class="lg:col-span-1">
+        <Highlights title="Catatan Penting 2024" items={highlightsData} color={color} />
+      </div>
+    </div>
+
+    <!-- DetailTable pindah ke paling bawah -->
+    <div class="mt-6">
+      <DetailTable
+            title="Rincian Indeks SPBE Tahun 2021"
+            data={detailData}
+          />
+    </div>
+  </div>
+</div>
+
+
+  </div>
+</Layout>

@@ -1,0 +1,68 @@
+---
+const chartData = [
+  { year: 2021, value: 2.98, desc: 'Awal transformasi digital.' },
+  { year: 2022, value: 2.81, desc: 'Peningkatan integrasi layanan.' },
+  { year: 2023, value: 3.48, desc: 'Implementasi lintas instansi.' },
+  { year: 2024, value: 3.98, desc: 'Menuju SPBE yang optimal.' }
+];
+---
+
+<section id="chart-mini" class="bg-blue-50 py-20">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center text-slate-800 mb-4">Indeks SPBE Tahunan</h2>
+    <p class="text-lg text-slate-600 mb-12 max-w-2xl mx-auto text-center">
+      Peningkatan Indeks SPBE Kab. Bandung yang positif setiap tahun
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      {chartData.map((data) => (
+        <a href={`/chart/${data.year}`} class="group bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 duration-300 p-6 flex flex-col items-center text-center">
+          <div class="relative w-28 h-28">
+            <canvas id={`chart-${data.year}`} class="w-full h-full"></canvas>
+            <span class="absolute inset-0 flex items-center justify-center text-blue-800 font-bold text-lg">{data.value}</span>
+          </div>
+          <div class="mt-4">
+            <p class="text-sm text-gray-400">{data.year}</p>
+            <p class="text-sm text-slate-600 mt-1">{data.desc}</p>
+            <p class="text-sm text-blue-600 mt-1 underline opacity-0 group-hover:opacity-100 transition">Lihat Detail</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const chartConfigs = {
+        2021: 2.98,
+        2022: 2.81,
+        2023: 3.48,
+        2024: 3.98
+      };
+
+      Object.entries(chartConfigs).forEach(([year, value]) => {
+        const ctx = document.getElementById(`chart-${year}`);
+        if (!ctx) return;
+
+        new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: ['Nilai', 'Sisa'],
+            datasets: [{
+              data: [value, 5 - value],
+              backgroundColor: ['#3B82F6', '#DBEAFE'],
+              borderWidth: 0
+            }]
+          },
+          options: {
+            cutout: '75%',
+            plugins: {
+              legend: { display: false },
+              tooltip: { enabled: false }
+            }
+          }
+        });
+      });
+    });
+  </script>
+</section>

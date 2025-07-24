@@ -1,0 +1,21 @@
+---
+interface Props {
+    title: string;
+    items: string[];
+    color: string;
+}
+const { title, items, color } = Astro.props;
+---
+<div class="bg-white p-6 rounded-2xl shadow-md h-full">
+    <h3 class="text-xl font-bold text-slate-800 mb-4">{title}</h3>
+    <ul class="space-y-3">
+        {items.map(item => (
+            <li class="flex items-start">
+                <svg class="flex-shrink-0 h-5 w-5 mt-0.5" viewBox="0 0 20 20" fill="currentColor" style={`color: ${color}`}>
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="ml-3 text-slate-600">{item}</span>
+            </li>
+        ))}
+    </ul>
+</div>

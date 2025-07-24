@@ -1,0 +1,23 @@
+<header 
+  x-data="{ scrolled: false }"
+  @scroll.window="scrolled = (window.scrollY > 50)"
+  class="fixed top-0 left-0 w-full p-4 z-50 transition-all duration-300"
+  :class="{ 'bg-gray-900/80 backdrop-blur-sm shadow-lg': scrolled }"
+>
+  <nav class="flex justify-between items-center max-w-7xl mx-auto">
+    
+    <a href="/" class="flex items-center space-x-3">
+      <img src="/images/logo.png" alt="Logo SPBE Kabupaten Bandung" class="h-12 w-auto">
+      <span class="text-sm font-bold uppercase tracking-wider text-white">
+        SPBE Kab. Bandung
+      </span>
+    </a>
+
+    <ul class="hidden md:flex space-x-10 text-lg text-white">
+      <li><a href="/" class="hover:opacity-75 transition-opacity">Beranda</a></li>
+      <li><a href="/info-spbe" class="hover:opacity-75 transition-opacity">Info SPBE</a></li>
+      <li><a href="/berita" class="hover:opacity-75 transition-opacity">Berita</a></li>
+      <li><a href="/#galeri" class="hover:opacity-75 transition-opacity">Galeri</a></li>
+    </ul>
+  </nav>
+</header>

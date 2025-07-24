@@ -1,0 +1,450 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const tujuan = [
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+    title: "Tata Kelola Bersih & Efektif",
+    desc: "Mewujudkan tata kelola pemerintahan yang bersih, efektif, transparan, dan akuntabel bagi seluruh masyarakat."
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.472-2.472a3.375 3.375 0 00-4.773-4.773L6.75 11.25l-2.472 2.472a3.375 3.375 0 004.773 4.773z" /></svg>`,
+    title: "Layanan Publik Berkualitas",
+    desc: "Meningkatkan kualitas layanan publik yang terpadu, prima, dan mudah diakses oleh masyarakat kapan saja."
+  },
+];
+
+const manfaat = [
+ {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>`,
+    title: "Bagi Masyarakat",
+    desc: "Memperoleh layanan yang lebih cepat, mudah, dan dapat diakses kapan saja dan di mana saja."
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1.5-1.5m1.5 1.5l1.5-1.5m0 0l1.5 1.5m-1.5-1.5l-1.5 1.5" /></svg>`,
+    title: "Bagi Pemerintah",
+    desc: "Mendorong pengambilan keputusan yang lebih akurat berbasis data (data-driven)."
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.432 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`,
+    title: "Bagi Pembangunan",
+    desc: "Meningkatkan transparansi dan akuntabilitas yang mendorong kepercayaan publik."
+  }
+];
+
+const domains = [
+  {
+    name: "Domain Kebijakan",
+    description: "Arah dan landasan hukum untuk penyelenggaraan pemerintahan berbasis elektronik yang terpadu.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>`,
+    color: "from-slate-600 to-slate-800"
+  },
+  {
+    name: "Domain Tata Kelola",
+    description: "Pengorganisasian dan mekanisme kerja untuk memastikan SPBE berjalan efektif dan efisien.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21v-4.5m0 4.5h4.5m-4.5 0L9 15M3.75 3v4.5m0-4.5h4.5m-4.5 0L9 9M15 3h4.5m-4.5 0v4.5m0-4.5L9 9m-3 6h12m-12 0v4.5m12-4.5v-4.5m0 4.5L15 9" /></svg>`,
+    color: "from-slate-700 to-slate-900"
+  },
+  {
+    name: "Domain Manajemen",
+    description: "Pengelolaan aset TIK, sumber daya manusia, keamanan informasi, dan manajemen data.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 00-1.883 2.542l.857 6a2.25 2.25 0 002.227 1.932H19.05a2.25 2.25 0 002.227-1.932l.857-6a2.25 2.25 0 00-1.883-2.542m-16.5 0V6A2.25 2.25 0 016 3.75h12A2.25 2.25 0 0120.25 6v3.776" /></svg>`,
+    color: "from-gray-600 to-gray-800"
+  },
+  {
+    name: "Domain Layanan",
+    description: "Penyediaan layanan publik dan administrasi pemerintahan yang terintegrasi dan berbasis digital.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" /></svg>`,
+    color: "from-zinc-600 to-zinc-800"
+  },
+];
+---
+
+<style>
+  .geometric-bg {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .geometric-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(255,255,255,0.08) 0%, transparent 50%);
+    animation: float 20s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+  }
+  
+  .card-hover {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  }
+  
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .timeline-item {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, #1e293b, #334155);
+  }
+  
+  .timeline-dot {
+    position: absolute;
+    left: -8px;
+    top: 1rem;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #1e293b, #334155);
+    border: 3px solid white;
+    box-shadow: 0 0 0 4px rgba(30, 41, 59, 0.2);
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 4px rgba(30, 41, 59, 0.2); }
+    50% { box-shadow: 0 0 0 8px rgba(30, 41, 59, 0.1); }
+    100% { box-shadow: 0 0 0 4px rgba(30, 41, 59, 0.2); }
+  }
+  
+  .wave-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='bgGradient' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%' stop-color='%231e293b'/%3E%3Cstop offset='100%' stop-color='%23334155'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='url(%23bgGradient)'/%3E%3C/svg%3E") no-repeat;
+  background-size: cover;
+   }
+  
+  .gradient-text {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    -webkit-background-clip: text;
+    background-clip: text;  
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .btn-modern {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(45deg, #1e293b, #334155);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .btn-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  .btn-modern:hover::before {
+    left: 100%;
+  }
+  
+  .btn-modern:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(30, 41, 59, 0.3);
+  }
+</style>
+
+<Layout title="Informasi SPBE">
+  <!-- Hero Section -->
+  <section class="geometric-bg text-white min-h-screen flex items-center relative">
+    <div class="max-w-6xl mx-auto px-6 py-20 text-center relative z-10">
+      <div class="mb-8">
+        <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-6 leading-tight">
+          SPBE
+          <span class="block text-4xl md:text-5xl font-light opacity-90">Kabupaten Bandung</span>
+        </h1>
+        <p class="text-lg md:text-2xl opacity-90 max-w-5xl mx-auto leading-relaxed">
+          Transformasi Digital Pemerintahan untuk Pelayanan Publik yang Lebih Baik
+        </p>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10">
+        <a href="#domains" class="btn-modern">
+          Jelajahi 4 Domain SPBE
+        </a>
+        <a href="/chart/2021" class="glass-effect px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-all duration-300">
+          Indeks SPBE
+        </a>
+      </div>
+    </div>
+  </section>
+
+    <!-- Mengenal SPBE -->
+<section class="py-32 px-6 bg-white text-slate-800">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-12 gap-12 items-center">
+    <div class="md:col-span-6 z-10">
+      <h2 class="text-4xl font-bold mb-6 leading-tight">Mengenal SPBE</h2>
+      <p class="text-lg text-slate-600 mb-8">
+        Sistem Pemerintahan Berbasis Elektronik (SPBE) merupakan inisiatif untuk mempercepat transformasi digital pemerintahan guna meningkatkan layanan publik yang terpadu, efektif, dan efisien.
+      </p>
+      <div class="space-y-4 text-slate-700">
+        <div class="flex items-start gap-3">
+          <div class="w-3 h-3 mt-1 rounded-full bg-blue-500"></div>
+          <p>Meningkatkan tata kelola pemerintahan berbasis digital</p>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="w-3 h-3 mt-1 rounded-full bg-blue-500"></div>
+          <p>Memperluas jangkauan layanan publik</p>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="w-3 h-3 mt-1 rounded-full bg-blue-500"></div>
+          <p>Memperkuat transparansi dan akuntabilitas</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="md:col-span-6 z-10">
+      <img 
+        src="/images/mengenal.svg" 
+        alt="Ilustrasi SPBE"
+        class="w-full max-w-lg mx-auto rounded-xl"
+      />
+    </div>
+  </div>
+</section>
+
+    <!--4 Domain -->
+  <section id="domains" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-4xl font-bold gradient-text mb-4">4 Domain Utama SPBE</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Fondasi kokoh untuk pemerintahan digital yang terintegrasi dan efisien
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {domains.map((domain, index) => (
+          <div class={`card-hover bg-white rounded-3xl p-8 text-center shadow-lg border-2 border-gray-100 relative overflow-hidden group`}>
+            <div class={`absolute inset-0 bg-gradient-to-br ${domain.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+            
+            <div class={`w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${domain.color} flex items-center justify-center text-white transform group-hover:scale-110 transition-transform duration-300`}>
+              <div set:html={domain.icon} />
+            </div>
+            
+            <h3 class="text-xl font-bold text-gray-800 mb-4">{domain.name}</h3>
+            <p class="text-gray-600 leading-relaxed">{domain.description}</p>
+            
+            <div class="mt-6 text-center">
+              <span class={`inline-block w-8 h-1 bg-gradient-to-r ${domain.color} rounded-full`}></span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+      <!--Dasar Hukum -->
+ <section class="py-20 bg-white" id="accordion-law">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-10">
+        <h2 class="text-4xl font-bold mb-2 text-gray-800">Dasar Hukum</h2>
+        <p class="text-lg text-gray-600">Landasan regulasi SPBE dari tingkat pusat hingga daerah</p>
+      </div>
+      <div class="space-y-4">
+
+        <!-- PERATURAN PRESIDEN -->
+        <details class="group border border-gray-200 rounded-lg overflow-hidden transition-all">
+          <summary class="cursor-pointer flex items-center justify-between p-4 text-lg font-medium text-gray-800 bg-gray-100 group-hover:bg-slate-800 group-hover:text-white transition-colors">
+            Peraturan Presiden
+            <span class="transform transition-transform group-open:rotate-180">⌄</span>
+          </summary>
+          <ul class="px-4 pb-4 pt-2 space-y-2">
+            <li>
+              <a href="https://drive.google.com/file/d/1-Kr_cxz22IrCIsC3GCHVT2vMf5ddYU9A/view?usp=sharing" target="_blank"
+                 class="block rounded-md px-4 py-2 text-gray-800 hover:bg-gray-100 active:bg-gray-200 transition-all duration-150">
+                Perpres No. 95 Tahun 2018 tentang SPBE
+              </a>
+            </li>
+            <li>
+              <a href="https://drive.google.com/file/d/1gqEylBGF-s9KJ8_U9BGiKr68-vtSerPR/view?usp=sharing" target="_blank"
+                 class="block rounded-md px-4 py-2 text-gray-800 hover:bg-gray-100 active:bg-gray-200 transition-all duration-150">
+                Perpres No. 39 Tahun 2019 tentang Satu Data Indonesia
+              </a>
+            </li>
+            <li>
+              <a href="https://drive.google.com/file/d/1733MwXQlSVYmqLkDiHL5k8qkX4_9xSX5/view?usp=sharing" target="_blank"
+                 class="block rounded-md px-4 py-2 text-gray-800 hover:bg-gray-100 active:bg-gray-200 transition-all duration-150">
+                Perpres No. 132 Tahun 2022 tentang Arsitektur SPBE
+              </a>
+            </li>
+            <li>
+              <a href="https://drive.google.com/file/d/1pTNHwSUu4O7A_QZuaosfx9ETB5JvYyMI/view?usp=sharing" target="_blank"
+                 class="block rounded-md px-4 py-2 text-gray-800 hover:bg-gray-100 active:bg-gray-200 transition-all duration-150">
+                Perpres No. 82 Tahun 2023 tentang Transformasi Digital Nasional
+              </a>
+            </li>
+          </ul>
+        </details>
+
+        <!-- PERATURAN PROVINSI -->
+        <details class="group border border-gray-200 rounded-lg overflow-hidden transition-all">
+          <summary class="cursor-pointer flex items-center justify-between p-4 text-lg font-medium text-gray-800 bg-gray-100 group-hover:bg-slate-800 group-hover:text-white transition-colors">
+            Peraturan Provinsi Jawa Barat
+            <span class="transform transition-transform group-open:rotate-180">⌄</span>
+          </summary>
+          <ul class="px-4 pb-4 pt-2 space-y-2">
+            <li>
+              <a href="https://drive.google.com/file/d/1oxvNgK3p1O9VUT2-PnQWrxa5fKpoFBTU/view?usp=sharing" target="_blank"
+                 class="block rounded-md px-4 py-2 text-gray-800 hover:bg-gray-100 active:bg-gray-200 transition-all duration-150">
+                Pergub Jabar No. 86 Tahun 2018 tentang Tata Kelola SPBE
+              </a>
+            </li>
+            <li>
+              <a href="https://drive.google.com/file/d/17dhz-XDl4uZEN9fP5ZdZgS0aaf7MGOIz/view?usp=sharing" target="_blank"
+                 class="block rounded-md px-4 py-2 text-gray-800 hover:bg-gray-100 active:bg-gray-200 transition-all duration-150">
+                Pergub Jabar No. 161 Tahun 2022 tentang Penyelenggaraan SPBE di Linkungan Pemerintah Daerah Jawa Barat
+              </a>
+            </li>
+          </ul>
+        </details>
+
+        <!-- PERATURAN DAERAH KAB. BANDUNG -->
+        <details class="group border border-gray-200 rounded-lg overflow-hidden transition-all">
+          <summary class="cursor-pointer flex items-center justify-between p-4 text-lg font-medium text-gray-800 bg-gray-100 group-hover:bg-slate-800 group-hover:text-white transition-colors">
+            Peraturan Daerah Kabupaten Bandung
+            <span class="transform transition-transform group-open:rotate-180">⌄</span>
+          </summary>
+          <ul class="px-4 pb-4 pt-2 space-y-2">
+            <li>
+              <a href="https://drive.google.com/file/d/1a_i8N1qKu8blpYVaIAdTIYolN9Qt_2_e/view?usp=sharing" target="_blank"
+                 class="block rounded-md px-4 py-2 text-gray-800 hover:bg-gray-100 active:bg-gray-200 transition-all duration-150">
+                Perbup No. 69 Tahun 2021 tentang Penyelenggaraan SPBE
+              </a>
+            </li>
+            <li>
+              <a href="https://drive.google.com/file/d/1ars3S3lBPHQo3VWST2xBuld1p_1OS_Tc/view?usp=sharing" target="_blank"
+                 class="block rounded-md px-4 py-2 text-gray-800 hover:bg-gray-100 active:bg-gray-200 transition-all duration-150">
+                Perbup No. 92 Tahun 2021 tentang Pedoman Manajemen Keamanan Informasi SPBE dan Pelaksanaan Persandian untuk Pengamanan Informasi
+              </a>
+            </li>
+            <li>
+              <a href="https://drive.google.com/file/d/1v-oniyn6CR0KVnLxPRd0RxN7S_j8UNNy/view?usp=sharing" target="_blank"
+                 class="block rounded-md px-4 py-2 text-gray-800 hover:bg-gray-100 active:bg-gray-200 transition-all duration-150">
+                Perbup No. 3 Tahun 2023 tentang Tata Kelola SPBE
+              </a>
+            </li>
+          </ul>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap Section -->
+  <section id="roadmap" class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold gradient-text mb-4">GDRBN 2025-2045</h2>
+        <p class="text-xl text-gray-600">Perjalanan transformasi digital yang terstruktur dan berkelanjutan</p>
+      </div>
+      
+      <div class="max-w-4xl mx-auto">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="bg-white p-8 rounded-2xl shadow-lg ml-8 card-hover">
+            <div class="flex items-center mb-4">
+              <span class="bg-gradient-to-r from-slate-600 to-slate-800 text-white px-4 py-2 rounded-full text-sm font-semibold mr-4">2025-2029</span>
+              <h3 class="text-2xl font-bold text-gray-800">Digital Governance</h3>
+            </div>
+            <p class="text-gray-600 leading-relaxed">Penyusunan masterplan komprehensif, pembentukan tim koordinasi lintas-OPD, dan pemetaan arsitektur sistem informasi yang terintegrasi.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="bg-white p-8 rounded-2xl shadow-lg ml-8 card-hover">
+            <div class="flex items-center mb-4">
+              <span class="bg-gradient-to-r from-gray-600 to-gray-800 text-white px-4 py-2 rounded-full text-sm font-semibold mr-4">2030-2034</span>
+              <h3 class="text-2xl font-bold text-gray-800">Whole-of-Governance</h3>
+            </div>
+            <p class="text-gray-600 leading-relaxed">Penguatan kolaborasi lintas instansi, integrasi proses bisnis antar layanan, dan penerapan kebijakan berbasis data secara menyeluruh.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="bg-white p-8 rounded-2xl shadow-lg ml-8 card-hover">
+            <div class="flex items-center mb-4">
+              <span class="bg-gradient-to-r from-zinc-600 to-zinc-800 text-white px-4 py-2 rounded-full text-sm font-semibold mr-4">2035-2039</span>
+              <h3 class="text-2xl font-bold text-gray-800">Platform Governance</h3>
+            </div>
+            <p class="text-gray-600 leading-relaxed">Pengembangan ekosistem layanan digital berbasis platform terbuka, keterlibatan aktif sektor swasta dan masyarakat, serta inovasi pelayanan publik terpadu.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="bg-white p-8 rounded-2xl shadow-lg ml-8 card-hover">
+            <div class="flex items-center mb-4">
+              <span class="bg-gradient-to-r from-gray-600 to-gray-800 text-white px-4 py-2 rounded-full text-sm font-semibold mr-4">2039-2045</span>
+              <h3 class="text-2xl font-bold text-gray-800">Human-Based-Governance</h3>
+            </div>
+            <p class="text-gray-600 leading-relaxed">Pelayanan publik yang berfokus pada kebutuhan warga, pengambilan keputusan berbasis empati dan nilai kemanusiaan, serta tata kelola yang inklusif dan berkelanjutan.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const accordion = document.getElementById('accordion-law')
+    const allDetails = accordion.querySelectorAll('details')
+
+    allDetails.forEach((targetDetail) => {
+      targetDetail.addEventListener('toggle', () => {
+        if (targetDetail.open) {
+          allDetails.forEach((detail) => {
+            if (detail !== targetDetail) detail.removeAttribute('open')
+          })
+        }
+      })
+    })
+  })
+</script>

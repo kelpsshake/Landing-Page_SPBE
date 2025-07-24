@@ -1,0 +1,45 @@
+---
+// src/components/spbe/DetailTable.astro
+interface DomainItem {
+  name: string;
+  value: number;
+}
+interface DomainGroup {
+  domain: string;
+  items: DomainItem[];
+}
+interface Props {
+  title: string;
+  data: DomainGroup[];
+}
+const { title, data } = Astro.props;
+---
+
+<div class="bg-white p-6 rounded-2xl shadow-md">
+  <h3 class="text-xl font-bold text-slate-800 mb-4">{title}</h3>
+  <div class="overflow-x-auto">
+    <table class="w-full text-left border-collapse">
+      <thead class="border-b-2 border-slate-200">
+        <tr>
+          <th class="p-3 text-sm font-semibold text-slate-500">Indikator</th>
+          <th class="p-3 text-sm font-semibold text-slate-500 text-right">Nilai Indeks</th>
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((group) => (
+          <>
+            <tr class="bg-slate-100">
+              <td colspan="2" class="p-3 font-bold text-slate-700">{group.domain}</td>
+            </tr>
+            {group.items.map((item) => (
+              <tr class="border-b border-slate-100">
+                <td class="p-3 text-slate-700">{item.name}</td>
+                <td class="p-3 font-semibold text-slate-800 text-right">{item.value.toFixed(2)}</td>
+              </tr>
+            ))}
+          </>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+---
+const jumlahGambar = 12;
+---
+<section id="galeri" class="bg-blue-50 py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Galeri Kegiatan</h2>
+      <p class="text-slate-600 mt-2 max-w-xl mx-auto">
+        Cuplikan kegiatan dan inovasi layanan digital di lingkungan Pemerintah Kabupaten Bandung.
+      </p>
+    </div>
+
+    <div class="relative overflow-hidden group">
+      <div class="flex gap-6 animate-pingpong group-hover:pause-animation no-scrollbar">
+        {Array.from({ length: jumlahGambar }).map((_, i) => (
+          <div class="flex-shrink-0 w-60 h-80 rounded-xl overflow-hidden shadow-md bg-gray-200 transform transition duration-300 hover:scale-105">
+            <img 
+              src={`https://picsum.photos/400/600?random=${i + 1}`} 
+              alt={`Galeri ${i + 1}`} 
+              class="w-full h-full object-cover"
+              loading="lazy" 
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @keyframes pingpong {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    .animate-pingpong {
+      animation: pingpong 8s ease-in-out infinite;
+    }
+
+    .pause-animation:hover {
+      animation-play-state: paused;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</section>

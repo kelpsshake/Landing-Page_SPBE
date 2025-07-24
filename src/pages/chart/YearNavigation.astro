@@ -1,0 +1,26 @@
+---
+// components/spbe/YearNavigation.astro
+interface Props {
+  currentYear: number;
+}
+const { currentYear } = Astro.props;
+
+const years = [2021, 2022, 2023, 2024];
+---
+<div class="bg-white p-4 rounded-2xl shadow-md">
+  <h3 class="text-lg font-semibold mb-2 text-slate-700">Lihat Tahun Lain</h3>
+  <div class="flex flex-col gap-2">
+    {years.map(year => (
+      <a 
+        href={`/chart/${year}`} 
+        class={`transition-colors duration-200 ${
+          year === currentYear 
+            ? 'text-indigo-600 font-bold underline' 
+            : 'text-slate-600 hover:text-indigo-500 hover:underline'
+        }`}
+      >
+        Tahun {year}
+      </a>
+    ))}
+  </div>
+</div>

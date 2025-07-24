@@ -1,0 +1,85 @@
+---
+import type { GetStaticPaths, Page } from 'astro';
+import Layout from '../../layouts/Layout.astro';
+import { allNews } from '../../data/berita.js';
+
+interface NewsArticle {
+  title: string;
+  category: string;
+  image: string;
+  date: string;
+  slug: string;
+}
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  return paginate(allNews, { pageSize: 6 });
+}
+
+const { page } = Astro.props as { page: Page<NewsArticle> };
+const { currentPage, totalPages, url } = page;
+---
+
+<Layout title={`Arsip Berita SPBE - Halaman ${currentPage}`}>
+  <div class="bg-slate-900">
+    <header>
+      <div class="max-w-7xl mx-auto px-6 pt-16 pb-8 text-center">
+        <h1 class="text-4xl md:text-4xl font-extrabold mt-10 text-white">Arsip Berita</h1>
+        <p class="mt-4 text-lg text-slate-300">
+          Jelajahi semua berita dan perkembangan terbaru seputar Kabupaten Bandung.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <div class="max-w-7xl mx-auto px-6 pb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {page.data.map(news => (
+            <a href={`/berita/${news.slug}`} class="group block bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+              <div class="relative">
+                <img src={news.image} alt={news.title} class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+              </div>
+              <div class="p-6">
+                <p class="text-sm font-semibold text-blue-600 uppercase tracking-wider">{news.category}</p>
+                <h3 class="mt-2 text-lg font-bold text-slate-800 group-hover:text-blue-700 transition-colors">{news.title}</h3>
+                <p class="mt-4 text-sm text-slate-500">{news.date}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <nav class="mt-16 flex justify-center items-center gap-2" aria-label="Pagination">
+          {url.prev ? (
+            <a href={url.prev} class="flex items-center justify-center w-10 h-10 rounded-lg bg-white/10 border border-white/20 text-white/60 hover:bg-white/20 transition-colors">
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" /></svg>
+            </a>
+          ) : (
+            <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-white/5 border border-white/10 text-white/30 cursor-not-allowed">...</span>
+          )}
+
+          {[...Array(totalPages).keys()].map(num => {
+            const pageNum = num + 1;
+            const isActive = currentPage === pageNum;
+            const href = `/berita/${pageNum === 1 ? '' : pageNum}`;
+            const className = isActive
+              ? "flex items-center justify-center w-10 h-10 rounded-lg text-sm font-semibold bg-white text-blue-600 shadow-md"
+              : "flex items-center justify-center w-10 h-10 rounded-lg text-sm font-semibold bg-white/10 text-white/80 border border-white/20 hover:bg-white/20 transition-colors";
+
+            return (
+              <a href={href} class={className}>
+                {pageNum}
+              </a>
+            );
+          })}
+
+          {url.next ? (
+            <a href={url.next} class="flex items-center justify-center w-10 h-10 rounded-lg bg-white/10 border border-white/20 text-white/60 hover:bg-white/20 transition-colors">
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010-1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" /></svg>
+            </a>
+          ) : (
+            <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-white/5 border border-white/10 text-white/30 cursor-not-allowed">...</span>
+          )}
+        </nav>
+      </div>
+    </main>
+  </div>
+</Layout>
