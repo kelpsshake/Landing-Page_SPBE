@@ -23,13 +23,21 @@ function initSlider() {
 
   // Fungsi untuk mengganti background dan judul
   function updateHero(index) {
-    const activeLocation = locations[index];
-    if (activeLocation && titleEl && subtitleEl) {
-      sliderContainer.style.backgroundImage = `url('${activeLocation.bgImage}')`;
-      titleEl.textContent = activeLocation.title;
-      subtitleEl.textContent = activeLocation.subtitle;
+  const activeLocation = locations[index];
+  if (activeLocation && titleEl && subtitleEl) {
+    sliderContainer.style.backgroundImage = `url('${activeLocation.bgImage}')`;
+    titleEl.textContent = activeLocation.title;
+    subtitleEl.textContent = activeLocation.subtitle;
+
+    // === Tambahan: update link Google Maps ===
+    const mapsLink = document.getElementById('hero-maps-link');
+    if (mapsLink && activeLocation.mapsUrl) {
+      mapsLink.href = activeLocation.mapsUrl;
+      mapsLink.style.display = 'inline-block'; // pastikan terlihat
     }
   }
+}
+
 
   // Fungsi untuk efek zoom pada kartu
   function updateCardClasses(splideInstance) {

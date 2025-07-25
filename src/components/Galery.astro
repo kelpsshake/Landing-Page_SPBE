@@ -1,5 +1,16 @@
 ---
-const jumlahGambar = 12;
+const galleryImages = [
+  '/images/1.jpg',
+  '/images/2.webp',
+  '/images/3.webp',
+  '/images/4.jpg',
+  '/images/5.jpg',
+  '/images/6.jpg',
+  '/images/7.jpg',
+  '/images/8.jpg',
+  '/images/9.jpg',
+  '/images/10.jpg'
+];
 ---
 <section id="galeri" class="bg-blue-50 py-20">
   <div class="max-w-7xl mx-auto px-6">
@@ -11,19 +22,19 @@ const jumlahGambar = 12;
     </div>
 
     <div class="relative overflow-hidden group">
-      <div class="flex gap-6 animate-pingpong group-hover:pause-animation no-scrollbar">
-        {Array.from({ length: jumlahGambar }).map((_, i) => (
-          <div class="flex-shrink-0 w-60 h-80 rounded-xl overflow-hidden shadow-md bg-gray-200 transform transition duration-300 hover:scale-105">
-            <img 
-              src={`https://picsum.photos/400/600?random=${i + 1}`} 
-              alt={`Galeri ${i + 1}`} 
-              class="w-full h-full object-cover"
-              loading="lazy" 
-            />
-          </div>
-        ))}
+        <div class="flex gap-6 animate-pingpong group-hover:pause-animation no-scrollbar">
+          {galleryImages.map((src, i) => (
+            <div class="flex-shrink-0 w-60 h-80 rounded-xl overflow-hidden shadow-md bg-gray-200 transform transition duration-300 hover:scale-105">
+              <img 
+                src={src} 
+                alt={`Galeri ${i + 1}`} 
+                class="w-full h-full object-cover"
+                loading="lazy" 
+              />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
   </div>
 
   <style>
