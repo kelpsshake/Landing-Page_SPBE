@@ -1,5 +1,5 @@
 ---
-// Import komponen yang dibutuhkan
+
 import Layout from '../../layouts/Layout.astro';
 import StatCard from '../../components/spbe/StatCard.astro';
 import DomainChart from '../../components/spbe/DomainChart.astro';
@@ -7,17 +7,20 @@ import DetailTable from '../../components/spbe/DetailTable.astro';
 import Highlights from '../../components/spbe/Highlights.astro';
 import YearNavigation from './YearNavigation.astro';
 
-// Data untuk tahun 2021
 const year = 2021;
 const totalIndex = 2.9;
 const category = "Baik";
-const color = '#8B5CF6'; 
+const color = '#6fa3f7'; 
 
 const domainData = [
-  { name: 'Kebijakan SPBE', value: 3.4 },
-  { name: 'Tata Kelola SPBE', value: 2.9 },
-  { name: 'Manajemen SPBE', value: 2.64 },
-  { name: 'Layanan SPBE', value: 3.03 },
+  { name: 'Kebijakan Internal terkait Tata Kelola SPBE', value: 3.4 },
+  { name: 'Perencanaan Strategis SPBE', value: 3.00 },
+  { name: 'Teknologi Informasi dan Komunikasi', value: 2.75 },
+  { name: 'Penyelenggara SPBE', value: 3.00 },
+  { name: 'Penerapanan Manajemen SPBE', value: 3.00 },
+  { name: 'Audit TIK', value: 1.00 },
+  { name: 'Layanan Administrasi Pemerintahan Berbasis Elektronik', value: 2.50 },
+  { name: 'Layanan Publik Berbasis Elektronik', value: 3.83 }
 ];
 
 const highlightsData = [
@@ -60,31 +63,28 @@ const detailData = [
 
 <Layout title={`Detail Indeks SPBE Tahun ${year}`}>
   <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
-    <div class="mb-8">
-      <h1 class="text-3xl sm:text-3xl font-extrabold text-white tracking-tight pt-12">
-        Rincian Indeks SPBE {year}
-      </h1>
-      <p class="mt-2 text-lg text-white">
-        Analisis mendalam capaian Indeks SPBE Kabupaten Bandung.
-      </p>
+    <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+            <div class="mb-8">
+            <h1 class="text-3xl sm:text-3xl font-extrabold text-white tracking-tight pt-12">Rincian Indeks SPBE {year}</h1>
+            <p class="mt-2 text-lg text-white">Analisis mendalam capaian Indeks SPBE Kabupaten Bandung.</p>
     </div>
 
     <div class="flex flex-col lg:flex-row gap-6">
-      <!-- Navigasi Tahun -->
+      <!-- Navigasi di kiri -->
       <div class="lg:w-1/5 w-full lg:sticky top-24 self-start">
         <YearNavigation />
       </div>
 
       <!-- Konten Utama -->
       <div class="flex-1 flex flex-col gap-6">
-        <!-- StatCard dan Chart -->
+        <!-- Bagian atas: Card + Chart + Highlights -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div class="lg:col-span-2 flex flex-col gap-6">
             <StatCard 
               index={totalIndex} 
               category={category} 
               color={color} 
-              year={year} 
+              year={2021} 
               note="Tahun ini menandai langkah awal transformasi digital yang terstruktur dengan pondasi kebijakan dan infrastruktur yang mulai dibangun." 
             />
             <DomainChart data={domainData} title="Komposisi Indeks per Domain" />
@@ -94,7 +94,7 @@ const detailData = [
           </div>
         </div>
 
-        <!-- Tabel Detail -->
+       <!-- DetailTable pindah ke paling bawah -->
         <div class="mt-6">
           <DetailTable
             title="Rincian Indeks SPBE Tahun 2021"
