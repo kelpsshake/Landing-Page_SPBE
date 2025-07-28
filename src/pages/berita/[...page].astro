@@ -56,24 +56,11 @@ const { currentPage, totalPages, url } = page;
             <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-white/5 border border-white/10 text-white/30 cursor-not-allowed">...</span>
           )}
 
-          {[...Array(totalPages).keys()].map(num => {
-            const pageNum = num + 1;
-            const isActive = currentPage === pageNum;
-            const href = `/berita/${pageNum === 1 ? '' : pageNum}`;
-            const className = isActive
-              ? "flex items-center justify-center w-10 h-10 rounded-lg text-sm font-semibold bg-white text-blue-600 shadow-md"
-              : "flex items-center justify-center w-10 h-10 rounded-lg text-sm font-semibold bg-white/10 text-white/80 border border-white/20 hover:bg-white/20 transition-colors";
-
-            return (
-              <a href={href} class={className}>
-                {pageNum}
-              </a>
-            );
-          })}
-
           {url.next ? (
             <a href={url.next} class="flex items-center justify-center w-10 h-10 rounded-lg bg-white/10 border border-white/20 text-white/60 hover:bg-white/20 transition-colors">
-              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010-1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" /></svg>
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+              </svg>
             </a>
           ) : (
             <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-white/5 border border-white/10 text-white/30 cursor-not-allowed">...</span>
